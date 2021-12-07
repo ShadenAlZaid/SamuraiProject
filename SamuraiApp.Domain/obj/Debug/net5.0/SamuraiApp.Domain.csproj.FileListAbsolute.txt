@@ -1,0 +1,15 @@
+C:\Users\salzaid\SamuraiProject\SamuraiApp.Domain\bin\Debug\net5.0\SamuraiApp.Domain.deps.json
+C:\Users\salzaid\SamuraiProject\SamuraiApp.Domain\bin\Debug\net5.0\SamuraiApp.Domain.dll
+C:\Users\salzaid\SamuraiProject\SamuraiApp.Domain\bin\Debug\net5.0\ref\SamuraiApp.Domain.dll
+C:\Users\salzaid\SamuraiProject\SamuraiApp.Domain\bin\Debug\net5.0\SamuraiApp.Domain.pdb
+C:\Users\salzaid\SamuraiProject\SamuraiApp.Domain\obj\Debug\net5.0\SamuraiApp.Domain.csproj.AssemblyReference.cache
+C:\Users\salzaid\SamuraiProject\SamuraiApp.Domain\obj\Debug\net5.0\SamuraiApp.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\salzaid\SamuraiProject\SamuraiApp.Domain\obj\Debug\net5.0\SamuraiApp.Domain.AssemblyInfoInputs.cache
+C:\Users\salzaid\SamuraiProject\SamuraiApp.Domain\obj\Debug\net5.0\SamuraiApp.Domain.AssemblyInfo.cs
+C:\Users\salzaid\SamuraiProject\SamuraiApp.Domain\obj\Debug\net5.0\SamuraiApp.Domain.csproj.CoreCompileInputs.cache
+C:\Users\salzaid\SamuraiProject\SamuraiApp.Domain\obj\Debug\net5.0\SamuraiApp.Domain.dll
+C:\Users\salzaid\SamuraiProject\SamuraiApp.Domain\obj\Debug\net5.0\ref\SamuraiApp.Domain.dll
+C:\Users\salzaid\SamuraiProject\SamuraiApp.Domain\obj\Debug\net5.0\SamuraiApp.Domain.pdb
+C:\Users\salzaid\SamuraiProject\SamuraiApp.Domain\bin\Debug\net5.0\SamuraiApp.Domain.runtimeconfig.json
+C:\Users\salzaid\SamuraiProject\SamuraiApp.Domain\bin\Debug\net5.0\SamuraiApp.Domain.runtimeconfig.dev.json
+C:\Users\salzaid\SamuraiProject\SamuraiApp.Domain\obj\Debug\net5.0\SamuraiApp.Domain.genruntimeconfig.cache
