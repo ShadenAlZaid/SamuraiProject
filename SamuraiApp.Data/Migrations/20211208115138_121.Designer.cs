@@ -10,8 +10,8 @@ using SamuraiApp.Data;
 namespace SamuraiApp.Data.Migrations
 {
     [DbContext(typeof(SamuraiContext))]
-    [Migration("20211207113903_manytomany")]
-    partial class manytomany
+    [Migration("20211208115138_121")]
+    partial class _121
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,6 +34,47 @@ namespace SamuraiApp.Data.Migrations
                     b.HasKey("BattleId");
 
                     b.ToTable("Battles");
+                });
+
+            modelBuilder.Entity("SamuraiApp.Domain.BattleSamurai", b =>
+                {
+                    b.Property<int>("BattleId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SamuraiId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateJoined")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("getdate()");
+
+                    b.HasKey("BattleId", "SamuraiId");
+
+                    b.HasIndex("SamuraiId");
+
+                    b.ToTable("BattleSamurai");
+                });
+
+            modelBuilder.Entity("SamuraiApp.Domain.Horse", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SamuraiId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SamuraiId")
+                        .IsUnique();
+
+                    b.ToTable("Horse");
                 });
 
             modelBuilder.Entity("SamuraiApp.Domain.Quote", b =>
@@ -63,17 +104,36 @@ namespace SamuraiApp.Data.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int?>("BattleId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BattleId");
-
                     b.ToTable("Samurais");
+                });
+
+            modelBuilder.Entity("SamuraiApp.Domain.BattleSamurai", b =>
+                {
+                    b.HasOne("SamuraiApp.Domain.Battle", null)
+                        .WithMany()
+                        .HasForeignKey("BattleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SamuraiApp.Domain.Samurai", null)
+                        .WithMany()
+                        .HasForeignKey("SamuraiId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("SamuraiApp.Domain.Horse", b =>
+                {
+                    b.HasOne("SamuraiApp.Domain.Samurai", null)
+                        .WithOne("Horse")
+                        .HasForeignKey("SamuraiApp.Domain.Horse", "SamuraiId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("SamuraiApp.Domain.Quote", b =>
@@ -89,18 +149,8 @@ namespace SamuraiApp.Data.Migrations
 
             modelBuilder.Entity("SamuraiApp.Domain.Samurai", b =>
                 {
-                    b.HasOne("SamuraiApp.Domain.Battle", null)
-                        .WithMany("Samurais")
-                        .HasForeignKey("BattleId");
-                });
+                    b.Navigation("Horse");
 
-            modelBuilder.Entity("SamuraiApp.Domain.Battle", b =>
-                {
-                    b.Navigation("Samurais");
-                });
-
-            modelBuilder.Entity("SamuraiApp.Domain.Samurai", b =>
-                {
                     b.Navigation("Quotes");
                 });
 #pragma warning restore 612, 618

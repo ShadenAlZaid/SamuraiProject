@@ -12,8 +12,19 @@ namespace SamuraiApp.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
-                "Data Source= (localdb)\\MSSQLLocalDB; Initial Catalog=SamuraiAppDataFirstLook");
-            
+                "Data Source= (localdb)\\MSSQLLocalDB; Initial Catalog=SamuraiAppData");
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Samurai>()
+             .HasMany(s => s.Battles)
+             .WithMany(b => b.Samurai)
+             .UsingEntity<BattleSamurai>
+              (bs => bs.HasOne<Battle>().WithMany(),
+               bs => bs.HasOne<Samurai>().WithMany())
+             .Property(bs => bs.DateJoined)
+             .HasDefaultValueSql("getdate()");
         }
     }
 }
