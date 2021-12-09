@@ -25,8 +25,8 @@ namespace SamuraiApp.UI
             foreach(string name in names)
             {
                 _context.Samurais.Add(new Samurai { Name = name });
-                _context.SaveChanges();
             }
+            _context.SaveChanges();
             //var samurai = new Samurai { Name = "Shaden" };
             //_context.Samurais.Add(samurai);
         }
