@@ -1,8 +1,8 @@
-﻿using System;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using SamuraiApp.Data;
 using SamuraiApp.Domain;
+using System;
+using System.Linq;
 
 namespace SamuraiApp.UI
 {
@@ -12,36 +12,44 @@ namespace SamuraiApp.UI
 
         private static void Main(string[] args)
         {
-            //_context.Database.EnsureCreated();
-
-            AddSamurai("Shaden", "Yasser");
+            _context.Database.EnsureCreated();
+            AddSamuraiByName("Shaden", "Yasser", "Ibrahim", "Samo");
             GetSamurais();
+            AddVariousTypes();
             Console.Write("Press any key...");
             Console.ReadKey();
         }
 
-        private static void AddSamurai(params string[] names)
+        private static void AddSamuraiByName(params string[] names)
         {
-            foreach(string name in names)
+            foreach (string name in names)
             {
                 _context.Samurais.Add(new Samurai { Name = name });
             }
             _context.SaveChanges();
-            //var samurai = new Samurai { Name = "Shaden" };
-            //_context.Samurais.Add(samurai);
         }
         private static void GetSamurais()
         {
             var samurais = _context.Samurais
             .TagWith("ConsoleApp.Program.GetSamurais method")
-            .ToList(); 
-            
+            .ToList();
+
             Console.WriteLine($"Samurai count is {samurais.Count}");
 
             foreach (var samurai in samurais)
             {
                 Console.WriteLine(samurai.Name);
             }
+        }
+
+        private static void AddVariousTypes()
+        {
+            _context.AddRange(
+                new Samurai { Name = "Sadeem" },
+                new Samurai { Name = "Rahaf" },
+                new Battle { Name = "Battle of Anegwa" },
+                new Battle { Name = "Battle of Nagashino" });
+            _context.SaveChanges();
         }
     }
 }
