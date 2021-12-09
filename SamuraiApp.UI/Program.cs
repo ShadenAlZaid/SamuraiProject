@@ -14,8 +14,8 @@ namespace SamuraiApp.UI
         {
             _context.Database.EnsureCreated();
             AddSamuraiByName("Shaden", "Yasser", "Ibrahim", "Samo");
-            GetSamurais();
             AddVariousTypes();
+            GetSamurais();
             Console.Write("Press any key...");
             Console.ReadKey();
         }
