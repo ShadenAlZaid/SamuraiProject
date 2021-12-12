@@ -89,7 +89,7 @@ namespace SamuraiApp.UI
             _context.SaveChanges();
         }
 
-        private static void InsertQuoteToExistingSamuraiNotTracked()
+        private static void InsertQuoteToExistingSamuraiNotTracked(int Id)
         {
             var samurai = _context.Samurais.Find(Id);
             samurai.Quotes.Add(new Quote { Text = "Greetings" });
@@ -99,6 +99,19 @@ namespace SamuraiApp.UI
                 newContext.Samurais.Attach(samurai);
                 newContext.SaveChanges();
             }
+        }
+
+        //simpler version, using foreign keys on quote
+        //id passed to function
+        //using declaration instead of using statement
+        //context will get disposed when mehtod is finished 
+
+        private static void SimpleInsertQuoteToExistingSamuraiNotTracked(int Id)
+        {
+            var quote = new Quote { Text = "Hello", SamuraiId = Id};
+            using var newContext = new SamuraiContext();
+            newContext.Quotes.Add(quote);
+            newContext.SaveChanges();
         }
     }
 }
