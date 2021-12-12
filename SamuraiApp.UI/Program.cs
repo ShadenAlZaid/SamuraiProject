@@ -2,6 +2,7 @@
 using SamuraiApp.Data;
 using SamuraiApp.Domain;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace SamuraiApp.UI
@@ -9,15 +10,17 @@ namespace SamuraiApp.UI
     class Program
     {
         private static SamuraiContext _context = new SamuraiContext();
+        private static SamuraiContext _contextNT = new SamuraiContext();
 
         private static void Main(string[] args)
         {
             _context.Database.EnsureCreated();
-            AddSamuraiByName("Shaden", "Yasser", "Ibrahim", "Samo");
+            //AddSamuraiByName("Shaden", "Yasser", "Ibrahim", "Samo");
             AddVariousTypes();
-            GetSamurais();
-            Console.Write("Press any key...");
-            Console.ReadKey();
+            //GetSamurais();
+            //Console.Write("Press any key...");
+            //Console.ReadKey();
+            QueryAndUpdateBattles_Disconnected();
         }
 
         private static void AddSamuraiByName(params string[] names)
@@ -50,6 +53,52 @@ namespace SamuraiApp.UI
                 new Battle { Name = "Battle of Anegwa" },
                 new Battle { Name = "Battle of Nagashino" });
             _context.SaveChanges();
+        }
+
+        private static void QueryAndUpdateBattles_Disconnected()
+        {
+            List<Battle> disconnectedBattles;
+
+            using (var context1 = new SamuraiContext())
+            {
+                disconnectedBattles = _context.Battles.ToList();
+            }
+            disconnectedBattles.ForEach(b =>
+            {
+                b.StartDate = new DateTime(1570, 01, 01);
+                b.EndDate = new DateTime(1570, 12, 01);
+            });
+
+            using (var context2 = new SamuraiContext())
+            {
+                context2.UpdateRange(disconnectedBattles);
+                context2.SaveChanges();
+            }
+        }
+
+        private static void InsertSamuraiWithQuote()
+        {
+            var samurai = new Samurai
+            {
+                Name = "Shado",
+                Quotes = new List<Quote> {
+                    new Quote{ Text = "Hello" }
+                }
+            };
+            _context.Samurais.Add(samurai);
+            _context.SaveChanges();
+        }
+
+        private static void InsertQuoteToExistingSamuraiNotTracked()
+        {
+            var samurai = _context.Samurais.Find(Id);
+            samurai.Quotes.Add(new Quote { Text = "Greetings" });
+            
+            using (var newContext = new SamuraiContext())
+            {
+                newContext.Samurais.Update(samurai);
+                newContext.SaveChanges();
+            }
         }
     }
 }
