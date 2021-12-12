@@ -96,7 +96,7 @@ namespace SamuraiApp.UI
             
             using (var newContext = new SamuraiContext())
             {
-                newContext.Samurais.Update(samurai);
+                newContext.Samurais.Attach(samurai);
                 newContext.SaveChanges();
             }
         }
