@@ -246,3 +246,17 @@ SamuraiApp.UI/obj/Debug/net5.0/SamuraiApp.UI.assets.cache
 SamuraiApp.UI/obj/Debug/net5.0/SamuraiApp.UI.csproj.AssemblyReference.cache
 SamuraiApp.Data/obj/Debug/net5.0/SamuraiApp.Data.assets.cache
 SamuraiApp.Data/obj/Debug/net5.0/SamuraiApp.Data.csproj.AssemblyReference.cache
+SamuraiApp.Data/Migrations/20211209132125_ss.Designer.cs
+SamuraiApp.Data/obj/Debug/net5.0/SamuraiApp.Data.assets.cache
+SamuraiApp.Data/obj/Debug/net5.0/SamuraiApp.Data.csproj.AssemblyReference.cache
+SamuraiApp.Data/obj/project.assets.json
+SamuraiApp.Data/obj/project.nuget.cache
+SamuraiApp.Data/obj/SamuraiApp.Data.csproj.nuget.dgspec.json
+SamuraiApp.Data/obj/SamuraiApp.Data.csproj.nuget.g.props
+SamuraiApp.UI/obj/Debug/net5.0/SamuraiApp.UI.assets.cache
+SamuraiApp.UI/obj/Debug/net5.0/SamuraiApp.UI.csproj.AssemblyReference.cache
+SamuraiApp.UI/obj/project.assets.json
+SamuraiApp.UI/obj/project.nuget.cache
+SamuraiApp.UI/obj/SamuraiApp.UI.csproj.nuget.dgspec.json
+SamuraiApp.UI/obj/SamuraiApp.UI.csproj.nuget.g.props
+SamuraiApp/.vs/SamuraiApp/v17/.suo
